@@ -28,6 +28,7 @@ urlpatterns = [
     path('services/',include('services.urls')),
     path('shop/',include('shop.urls')),
     path('login/',include('customer.urls')),
+    path('logout/',include('customer.urls')),
     path('login/signup/',include('customer.urls')),
     
     

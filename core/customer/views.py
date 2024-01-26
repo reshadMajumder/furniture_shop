@@ -40,6 +40,7 @@ def handlelogin(request):
         if user is not None:
             auth_login(request,user)
             print("logged in")
+           
             return redirect('home')
         
         
@@ -51,3 +52,8 @@ def handlelogin(request):
             return redirect('login')
 
     return render(request,'login.html')
+
+
+def handlelogout(request):
+    logout(request)
+    return redirect('home')

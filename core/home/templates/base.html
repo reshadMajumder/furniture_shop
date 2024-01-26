@@ -20,6 +20,8 @@
 		<title>{% block title %} {% endblock title %}</title>
 	</head>
     <body>
+        
+
 
 		<!-- Start Header/Navigation -->
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
@@ -51,13 +53,24 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                        {% if user.is_authenticated %}
+                        <li class="product-title"><a class="nav-link" href="{% url "login" %}"><img src="{% static "home/images/user.svg" %}"></a>{{ user.username }}</li>
+                        <li class="product-title"><a class="nav-link" href="{% url "logout" %}"><img src="{% static "home/images/user.svg" %}"></a>log out</li>
+                       
+						<li><a class="nav-link" href="{% url "cart" %} "><img src="{% static "home/images/cart.svg" %}"></a></li>
+                        
+                        {%  else  %}
+
 						<li><a class="nav-link" href="{% url "login" %}"><img src="{% static "home/images/user.svg" %}"></a></li>
 						<li><a class="nav-link" href="{% url "cart" %} "><img src="{% static "home/images/cart.svg" %}"></a></li>
-					</ul>
+                       
+                        {% endif %}
+                    </ul>
 				</div>
 			</div>
 				
 		</nav>
+        
         		<!-- End Header/Navigation -->
 
 {% block body %}
