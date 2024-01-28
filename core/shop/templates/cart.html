@@ -40,28 +40,28 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {% for product in products %}
+                        {% for product in cart_items %}
                         <tr>
                           <td class="product-thumbnail">
-                            <img src="{% static "product.image" %}" alt="Image" class="img-fluid">
+                            <img src=" /media/{{ product.product.image }}" alt="Image" class="img-fluid">
                           </td>
                           <td class="product-name">
-                            <h2 class="h5 text-black">{{ product.name }}</h2>
+                            <h2 class="h5 text-black">{{ product.product.name }}</h2>
                           </td>
-                          <td>{{ product.price }}</td>
+                          <td>{{ product.product.price }}</td>
                           <td>
                             <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
                               <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+                                <a href="{% url "remove_from_cart" product.product.id %}" class="btn btn-outline-black decrease" type="button">&minus;</a>
                               </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                              <input type="text" class="form-control text-center quantity-amount" value="{{ product.quantity }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                               <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
+                                <a href="{% url "add_from_cart" product.product.id %}" class="btn btn-outline-black increase" type="button">&plus;</a>
                               </div>
                             </div>
         
                           </td>
-                          <td>$49.00</td>
+                          <td>$ {{ product.total }} </td>
                           <td><a href="#" class="btn btn-black btn-sm">X</a></td>
                         </tr>
                         {% endfor %}
@@ -109,7 +109,7 @@
                           <span class="text-black">Subtotal</span>
                         </div>
                         <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
+                          <strong class="text-black">$ {{ product.sub_total}}</strong>
                         </div>
                       </div>
                       <div class="row mb-5">

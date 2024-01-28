@@ -61,11 +61,15 @@
 							<img src="/media/{{ product.image }}" class="img-fluid product-thumbnail">
 							<h3 class="product-title">Nordic Chair</h3>
 							<strong class="product-price">$50.00</strong>
- 
-							<span class="icon-cross">
-								<img src="{% static "home/images/cross.svg" %}" class="img-fluid">
+							<span class="icon-cross"> 
+								<a href="{% url 'add_to_cart' product.id %}" class="icon-cross">
+									<button>
+										add to cart
+									</button>
+									
+									
+								</a>
 							</span>
-						</a>
 					</div> 
 					
 					{% endfor %}
