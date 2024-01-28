@@ -38,7 +38,9 @@
 							<strong class="product-price">{{ product.price }} $</strong>
 
 							<span class="icon-cross">
-								<img src="{% static "home/images/cross.svg" %} " class="img-fluid">
+								<a href="{% url 'add_to_cart' product.id %}">add to cart
+
+								</a>
 							</span>
 						</a>
 					</div> 
